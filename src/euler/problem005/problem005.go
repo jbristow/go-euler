@@ -1,10 +1,6 @@
-package main
+package euler
 
-import (
-	"fmt"
-)
-
-func main() {
+func Problem005() int {
 	multiples := []int{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 	finalMulti := []int{1}
 	for len(multiples) > 0 {
@@ -23,5 +19,6 @@ func main() {
 	for _, multi := range finalMulti {
 		product = product * multi
 	}
-	fmt.Println(product)
+
+	return product
 }

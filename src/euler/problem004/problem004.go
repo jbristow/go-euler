@@ -1,9 +1,6 @@
-package main
+package euler
 
-import (
-	"fmt"
-	"strconv"
-)
+import "strconv"
 
 func isPal(s string) bool {
 	mid := len(s) / 2
@@ -16,8 +13,7 @@ func isPal(s string) bool {
 	return true
 }
 
-func main() {
-
+func Problem004() int {
 	maxProduct := 0
 	for i := 100; i <= 999; i++ {
 		for j := i; j <= 999; j++ {
@@ -27,6 +23,5 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(maxProduct)
-
+	return maxProduct
 }

@@ -1,15 +1,11 @@
-package main
+package euler
 
-import (
-	"./prime"
-	"fmt"
-)
+import "../prime"
 
-func main() {
-
+func Problem007() int {
 	primes := prime.DefaultPrimes
 	for i := 5; len(primes) < 10001; i += 2 {
 		_, primes = prime.IsPrime(i, primes)
 	}
-	fmt.Println(primes[len(primes)-1])
+	return primes[len(primes)-1]
 }

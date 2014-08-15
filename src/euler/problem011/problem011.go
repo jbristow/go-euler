@@ -1,9 +1,6 @@
-package main
+package euler
 
-import (
-	"fmt"
-	"math"
-)
+import "math"
 
 var (
 	grid [][]int = [][]int{[]int{8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
@@ -28,7 +25,7 @@ var (
 		[]int{1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48}}
 )
 
-func main() {
+func Problem011() int {
 	max := 0
 	for x := 0; x < len(grid)-4; x++ {
 		for y := 0; y < len(grid[x])-4; y++ {
@@ -36,25 +33,28 @@ func main() {
 			verticalB := grid[x+1][y] * grid[x+1][y+1] * grid[x+1][y+2] * grid[x+1][y+3]
 			verticalC := grid[x+2][y] * grid[x+2][y+1] * grid[x+2][y+2] * grid[x+2][y+3]
 			verticalD := grid[x+3][y] * grid[x+3][y+1] * grid[x+3][y+2] * grid[x+3][y+3]
+			maxVertical := findMax(verticalA, verticalB, verticalC, verticalD)
+
 			horizA := grid[x][y] * grid[x+1][y] * grid[x+2][y] * grid[x+3][y]
 			horizB := grid[x][y+1] * grid[x+1][y+1] * grid[x+2][y+1] * grid[x+3][y+1]
 			horizC := grid[x][y+2] * grid[x+1][y+2] * grid[x+2][y+2] * grid[x+3][y+2]
 			horizD := grid[x][y+3] * grid[x+1][y+3] * grid[x+2][y+3] * grid[x+3][y+3]
+			maxHoriz := findMax(horizA, horizB, horizC, horizD)
+
 			diagA := grid[x][y] * grid[x+1][y+1] * grid[x+2][y+2] * grid[x+3][y+3]
 			diagB := grid[x+3][y] * grid[x+2][y+1] * grid[x+1][y+2] * grid[x][y+3]
 
-			max = int(math.Max(float64(max),
-				math.Max(float64(verticalA),
-					math.Max(float64(verticalB),
-						math.Max(float64(verticalC),
-							math.Max(float64(verticalD),
-								math.Max(float64(horizA),
-									math.Max(float64(horizB),
-										math.Max(float64(horizC),
-											math.Max(float64(horizD),
-												math.Max(float64(diagA), float64(diagB))))))))))))
-
+			max = findMax(maxVertical, maxHoriz, diagA, diagB)
 		}
 	}
-	fmt.Println(max)
+
+	return max
+}
+
+func findMax(first int, nums ...int) (currMax int) {
+	currMax = first
+	for _, num := range nums {
+		currMax = int(math.Max(float64(currMax), float64(num)))
+	}
+	return
 }

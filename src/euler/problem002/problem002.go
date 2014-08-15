@@ -7,17 +7,15 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 https://projecteuler.net/problem=2
 */
-package main
+package problem002
 
-import "fmt"
-
-func main() {
+func Problem002(max int) int {
 	a, b, sum := 1, 1, 0
-	for i := 3; a+b < 4000000; i++ {
+	for i := 3; a+b < max; i++ {
 		a, b = b, a+b
 		if b%2 == 0 {
 			sum += b
 		}
 	}
-	fmt.Println(sum)
+	return sum
 }

@@ -3,12 +3,9 @@
 
   https://projecteuler.net/problem=13
 */
-package main
+package euler
 
-import (
-	"fmt"
-	"strconv"
-)
+import "strconv"
 
 var (
 	numberList = []string{"37107287533902102798797998220837590246510135740250",
@@ -113,7 +110,7 @@ var (
 		"53503534226472524250874054075591789781264330331690"}
 )
 
-func main() {
+func Problem013() string {
 	sums := []int{}
 	for digit := 0; digit <= 50; digit++ {
 		for i, val := range sums {
@@ -135,5 +132,6 @@ func main() {
 		finalSum += num
 	}
 
-	fmt.Println(strconv.Itoa(finalSum)[:10])
+	return strconv.Itoa(finalSum)[:10]
+
 }

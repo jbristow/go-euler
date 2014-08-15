@@ -1,11 +1,6 @@
-package main
+package euler
 
-import (
-	"fmt"
-)
-
-func main() {
-
+func Problem012() int {
 	sum := 0
 	divisorCount := 0
 	for i := 1; divisorCount <= 500; i++ {
@@ -13,7 +8,8 @@ func main() {
 		divisors := findDivisors(sum)
 		divisorCount = len(divisors)
 	}
-	fmt.Println(sum)
+
+	return sum
 }
 
 func findDivisors(num int) []int {

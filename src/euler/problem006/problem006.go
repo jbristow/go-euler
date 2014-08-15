@@ -1,11 +1,6 @@
-package main
+package euler
 
-import (
-	"fmt"
-)
-
-func main() {
-
+func Problem006() int {
 	sumOfSquares := 0
 	sums := 0
 
@@ -14,5 +9,5 @@ func main() {
 		sums += i
 	}
 
-	fmt.Println(sums*sums - sumOfSquares)
+	return sums*sums - sumOfSquares
 }

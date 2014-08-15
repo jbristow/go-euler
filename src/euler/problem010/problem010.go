@@ -1,11 +1,8 @@
-package main
+package euler
 
-import (
-	"./prime"
-	"fmt"
-)
+import "../prime"
 
-func main() {
+func problem010() int {
 	primes := prime.DefaultPrimes
 	sum := 2 + 3
 	for i := 5; i < 2000000; i += 2 {
@@ -15,5 +12,5 @@ func main() {
 			sum += i
 		}
 	}
-	fmt.Println(sum)
+	return sum
 }
